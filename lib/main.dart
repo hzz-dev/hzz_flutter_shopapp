@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         // 设置主题
         theme: ThemeData(
-          primaryColor: Colors.pink,
+          primaryColor: Colors.red,
         ),
         home: IndexPage(),
       ),

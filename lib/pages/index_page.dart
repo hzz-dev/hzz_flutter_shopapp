@@ -4,6 +4,7 @@ import 'cart/cart_page.dart';
 import 'home/home_page.dart';
 import 'category/category_page.dart';
 import 'member/member_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IndexPage extends StatefulWidget {
   @override
@@ -35,7 +36,12 @@ class _IndexPageState extends State<IndexPage> {
     )
   ];
 
-  final List tabBodies = [HomePage(), CategoryPage(), CartPage(), MemberPage()];
+  final List<Widget> tabBodies = [
+    HomePage(),
+    CategoryPage(),
+    CartPage(),
+    MemberPage()
+  ];
 
   int currentIndex = 0;
   var currentPage;
@@ -50,6 +56,9 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
+    // 适配组件 ScreenUtil
+    ScreenUtil.init(context,
+        designSize: Size(750, 1334), allowFontScaling: false);
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       bottomNavigationBar: BottomNavigationBar(
@@ -63,7 +72,7 @@ class _IndexPageState extends State<IndexPage> {
           });
         },
       ),
-      body: currentPage,
+      body: IndexedStack(index: currentIndex, children: tabBodies),
     );
   }
 }
