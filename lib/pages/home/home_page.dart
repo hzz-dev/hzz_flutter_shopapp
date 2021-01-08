@@ -5,6 +5,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import '../../routers/application.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -151,7 +152,8 @@ class _HomePageState extends State<HomePage>
       List<Widget> listWidget = hotGoodsList.map((val) {
         return InkWell(
             onTap: () {
-              // Application.router.navigateTo(context,"/detail?id=${val['goodsId']}");
+              Application.router
+                  .navigateTo(context, "/detail?id=${val['goodsId']}");
             },
             child: Container(
               width: ScreenUtil().setWidth(372),
@@ -431,39 +433,41 @@ class FloorContent extends StatelessWidget {
   }
 
   Widget _goodsItem(item) {
-    return Container(
-      padding: EdgeInsets.only(top: 5),
-      decoration: BoxDecoration(
-        color: Colors.white,
-      ),
-      width: ScreenUtil().setWidth(375),
-      child: InkWell(
-        onTap: () {
-          // Application.router.navigateTo(context,)
-        },
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Text(
-                item['name'],
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.only(top: 5),
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        width: ScreenUtil().setWidth(375),
+        child: InkWell(
+          onTap: () {
+            // Application.router.navigateTo(context,)
+          },
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: Text(
+                  item['name'],
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              child: Text(
-                item['descrition'],
-                style: TextStyle(fontSize: 13, color: Colors.grey),
+              Container(
+                child: Text(
+                  item['descrition'],
+                  style: TextStyle(fontSize: 13, color: Colors.grey),
+                ),
               ),
-            ),
-            Container(
-                child: Image.network(
-              item['image'],
-              width: ScreenUtil().setWidth(90),
-            )),
-          ],
+              Container(
+                  child: Image.network(
+                item['image'],
+                width: ScreenUtil().setWidth(80),
+              )),
+            ],
+          ),
         ),
       ),
     );
