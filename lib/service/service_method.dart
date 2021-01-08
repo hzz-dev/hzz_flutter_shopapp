@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import "package:dio/dio.dart";
 import 'dart:async';
 // import 'dart:io';
@@ -8,7 +10,8 @@ Future request(url, {formData}) async {
     //print('开始获取数据...............');
     Response response;
     Dio dio = new Dio();
-    dio.options.contentType = "application/x-www-form-urlencoded";
+    dio.options.contentType =
+        ContentType.parse("application/x-www-form-urlencoded").toString();
     if (formData == null) {
       response = await dio.post(servicePath[url]);
     } else {

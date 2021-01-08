@@ -5,7 +5,6 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
 
 class HomePage extends StatefulWidget {
   @override
